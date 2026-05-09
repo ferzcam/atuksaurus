@@ -2,21 +2,28 @@ import { useState } from 'react'
 import HumanFigure from './HumanFigure'
 import DinoFigure from './DinoFigure'
 import DinoDetail from './DinoDetail'
+import { parseSilhouetteAspect } from './silhouetteUtils'
 
 // Layout constants (px)
 const L = {
   axisW:    62,
   humanW:   88,
-  dinoW:   132,
-  dinoGap:  14,
+  dinoGap:  20,   // gap between dino slots
+  minSlot:  80,   // minimum slot width (keeps labels readable for tiny dinos)
   svgH:    540,
   groundY: 468,
   topPad:   34,
-  rightPad: 24,
-  labelH:   52,  // space below ground for labels
+  rightPad: 32,
 }
 
 const AVAILABLE_H = L.groundY - L.topPad   // 434 px
+
+/** Returns the slot width a dino needs given the current px/m scale. */
+function dinoSlotWidth(dino, scale) {
+  const heightPx = dino.heightM * scale
+  const aspect   = parseSilhouetteAspect(dino.assets.silhouette2d) ?? 1.5
+  return Math.max(heightPx * aspect, L.minSlot)
+}
 
 /**
  * ComparisonPlane — entry point for the comparison view.
@@ -35,7 +42,19 @@ export default function ComparisonPlane({ dinos, mode = '2d' }) {
   const maxH   = Math.max(...dinos.map(d => d.heightM), 2.5)
   const scale  = AVAILABLE_H / (maxH * 1.14)   // 14 % headroom above tallest
 
-  const svgW   = L.axisW + L.humanW + dinos.length * (L.dinoW + L.dinoGap) - L.dinoGap + L.rightPad
+  // Variable slot widths: each dino gets exactly as much horizontal room as
+  // its silhouette needs (height × aspect ratio), with a minimum for labels.
+  const slots = dinos.map(d => ({ dino: d, slotWidth: dinoSlotWidth(d, scale) }))
+
+  // Cumulative x positions
+  let xCursor = L.axisW + L.humanW
+  const positioned = slots.map(({ dino, slotWidth }) => {
+    const x = xCursor
+    xCursor += slotWidth + L.dinoGap
+    return { dino, x, slotWidth }
+  })
+
+  const svgW = xCursor - L.dinoGap + L.rightPad
 
   // Y-axis tick marks — one per meter up to ceil(max * 1.14)
   const maxTick = Math.ceil(maxH * 1.14)
@@ -100,14 +119,14 @@ export default function ComparisonPlane({ dinos, mode = '2d' }) {
           />
 
           {/* ── Dinosaurs ─────────────────────────────────────── */}
-          {dinos.map((dino, i) => (
+          {positioned.map(({ dino, x, slotWidth }) => (
             <DinoFigure
               key={dino.id}
               dino={dino}
-              x={L.axisW + L.humanW + i * (L.dinoW + L.dinoGap)}
+              x={x}
               groundY={L.groundY}
               scale={scale}
-              slotWidth={L.dinoW}
+              slotWidth={slotWidth}
               onFocus={setFocusedDino}
               isFocused={focusedDino?.id === dino.id}
               renderer={mode}

@@ -1,4 +1,5 @@
 import { DIET_META, TYPE } from '../../../data/dinosaurs'
+import { parseSilhouetteAspect } from '../silhouetteUtils'
 
 /**
  * Renderer2D — draws a dinosaur silhouette inside an SVG coordinate space.
@@ -16,20 +17,22 @@ export default function Renderer2D({ dino, x, topY, groundY, heightPx, slotWidth
   const fill = bg
 
   if (dino.assets.silhouette2d) {
+    // Scale by height (the primary comparison dimension); derive width from the
+    // image's natural aspect ratio encoded in the URL (e.g. "512x254.png" → 2.02).
+    // This prevents the "meet" mode from shrinking the image to fit a narrow slot.
+    const aspect   = parseSilhouetteAspect(dino.assets.silhouette2d) ?? 1.5
+    const renderH  = heightPx
+    const renderW  = renderH * aspect
+    const imgX     = x + slotWidth / 2 - renderW / 2   // center within slot
+
     return (
       <image
         href={dino.assets.silhouette2d}
-        x={x}
+        x={imgX}
         y={topY}
-        width={slotWidth}
-        height={heightPx}
-        preserveAspectRatio="xMidYMax meet"
-        style={{
-          // brightness(0) → forces all pixels to black; invert(1) → flips to white.
-          // This makes the black PhyloPic silhouette white on our dark background.
-          // The drop-shadow then adds a diet-color glow around the shape.
-          filter: `brightness(0) invert(1) drop-shadow(0 2px 10px ${stroke}cc)`,
-        }}
+        width={renderW}
+        height={renderH}
+        style={{ filter: `brightness(0) invert(1) drop-shadow(0 2px 10px ${stroke}cc)` }}
       />
     )
   }

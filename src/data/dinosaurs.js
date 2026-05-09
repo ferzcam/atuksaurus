@@ -42,7 +42,7 @@ export const DINOSAURS = [
     description: 'One of the smallest known dinosaurs, about the size of a turkey. Fast and agile, it hunted lizards and insects.',
     tags: ['small', 'europe'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/67970430-fb1c-467e-aab1-1c47cfb6aefc/raster/512x287.png', model3d: null, thumbnail: null },
   },
   {
     id: 'microraptor',
@@ -58,7 +58,7 @@ export const DINOSAURS = [
     description: 'A four-winged feathered dinosaur capable of gliding. One of the smallest dromaeosaurids ever found.',
     tags: ['small', 'feathered', 'asia'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/90bf7ae5-8653-4dbf-ae36-8854ac711dab/raster/512x355.png', model3d: null, thumbnail: null },
   },
   {
     id: 'archaeopteryx',
@@ -74,7 +74,7 @@ export const DINOSAURS = [
     description: 'The transitional fossil between non-avian dinosaurs and modern birds, with both feathers and reptilian features like teeth and clawed wings.',
     tags: ['small', 'feathered', 'europe', 'transitional'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/0df51444-e988-4b71-851e-d48d0b177f9c/raster/512x467.png', model3d: null, thumbnail: null },
   },
   // ── Small ─────────────────────────────────────────────────────────────────
   {
@@ -91,7 +91,7 @@ export const DINOSAURS = [
     description: 'A feathered pack hunter with a sickle-shaped killing claw. Much smaller than its Jurassic Park portrayal — roughly turkey-sized.',
     tags: ['small', 'feathered', 'asia', 'pack-hunter'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/8d1c194f-3bf7-4114-a32e-5b895167a017/raster/512x232.png', model3d: null, thumbnail: null },
   },
   {
     id: 'pteranodon',
@@ -107,7 +107,7 @@ export const DINOSAURS = [
     description: 'A large pterosaur (not a dinosaur) with a distinctive backward-pointing head crest and a wingspan up to 7 m. Soared over shallow inland seas.',
     tags: ['flying', 'north-america', 'not-a-dinosaur'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/5660912b-e734-45ba-be0d-4b196026bd87/raster/512x486.png', model3d: null, thumbnail: null },
   },
   {
     id: 'ankylosaurus',
@@ -123,7 +123,7 @@ export const DINOSAURS = [
     description: 'The ultimate armored dinosaur, covered in bony plates and sporting a massive tail club capable of shattering bone. A living tank.',
     tags: ['armored', 'north-america'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/8a8a2525-e97d-4505-8085-7958f8d36137/raster/512x149.png', model3d: null, thumbnail: null },
   },
   {
     id: 'gallimimus',
@@ -139,7 +139,7 @@ export const DINOSAURS = [
     description: 'One of the largest ornithomimosaurs, built for speed with hollow bones and long legs. Could reach speeds of ~50 km/h.',
     tags: ['fast', 'asia'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/38a46979-091e-427d-9ebc-712305e87475/raster/512x209.png', model3d: null, thumbnail: null },
   },
   {
     id: 'dilophosaurus',
@@ -155,7 +155,7 @@ export const DINOSAURS = [
     description: 'Recognized by its twin parallel crests running along the skull. One of the earliest large predatory dinosaurs. Did not spit venom — that\'s Hollywood.',
     tags: ['north-america', 'early-predator'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/36b898fe-0812-4832-8e6e-a5b2f26ee113/raster/512x439.png', model3d: null, thumbnail: null },
   },
   // ── Medium ────────────────────────────────────────────────────────────────
   {
@@ -172,7 +172,7 @@ export const DINOSAURS = [
     description: 'Famous for its dome-shaped skull up to 25 cm thick, likely used in head-butting contests between rivals. Bipedal plant-eater.',
     tags: ['north-america', 'dome-head'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/6105ff49-0bd0-477c-8bef-41b0c39fdca9/raster/512x254.png', model3d: null, thumbnail: null },
   },
   {
     id: 'baryonyx',
@@ -188,7 +188,7 @@ export const DINOSAURS = [
     description: 'A large fish-eating theropod with crocodile-like jaws and a distinctive large claw on each hand. Stomach contents included fish scales and bones.',
     tags: ['europe', 'fish-eater'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/452d28c2-9f32-49c8-8181-392b2aa66d71/raster/512x173.png', model3d: null, thumbnail: null },
   },
   {
     id: 'triceratops',
@@ -204,7 +204,7 @@ export const DINOSAURS = [
     description: 'The iconic three-horned dinosaur. Its large frill was likely used for display and thermoregulation. Shared its world with T. rex.',
     tags: ['north-america', 'horned'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/075de9e2-1b71-49d3-8d22-9eb2a78248e4/raster/512x242.png', model3d: null, thumbnail: null },
   },
   {
     id: 'carnotaurus',
@@ -220,7 +220,7 @@ export const DINOSAURS = [
     description: 'The "meat-eating bull", named for its distinctive horns above the eyes. Had extremely reduced arms, even shorter than T. rex\'s.',
     tags: ['south-america', 'horned-predator'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/07ac345a-7b69-4f99-a3fd-84b4d08fcd80/raster/512x230.png', model3d: null, thumbnail: null },
   },
   {
     id: 'iguanodon',
@@ -236,7 +236,7 @@ export const DINOSAURS = [
     description: 'One of the first dinosaurs ever described scientifically. Had a distinctive spike thumb, probably used as a defense weapon.',
     tags: ['europe', 'thumb-spike'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/aa1fb8ea-9cfe-429d-9b22-942a224cd74d/raster/512x189.png', model3d: null, thumbnail: null },
   },
   // ── Large ─────────────────────────────────────────────────────────────────
   {
@@ -253,7 +253,7 @@ export const DINOSAURS = [
     description: 'Recognizable by the double row of bony plates along its back and four tail spikes (the "thagomizer"). Surprisingly had a brain the size of a walnut.',
     tags: ['plated', 'north-america', 'jurassic'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/429d71d8-2940-449b-838b-a5b7f1733eba/raster/512x227.png', model3d: null, thumbnail: null },
   },
   {
     id: 'parasaurolophus',
@@ -269,7 +269,7 @@ export const DINOSAURS = [
     description: 'A hadrosaur (duck-billed dinosaur) with a long hollow cranial crest that functioned as a resonating chamber, producing deep, trombone-like calls.',
     tags: ['north-america', 'crest', 'hadrosaur'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/80afe0b5-630f-4599-b5bb-167211d25cb1/raster/512x330.png', model3d: null, thumbnail: null },
   },
   {
     id: 'edmontosaurus',
@@ -285,7 +285,7 @@ export const DINOSAURS = [
     description: 'One of the largest hadrosaurs, capable of walking on two or four legs. T. rex bite marks have been found on its bones — and healed.',
     tags: ['north-america', 'hadrosaur', 'large'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/fb219ea5-5581-4dd8-a668-a600385e2b1d/raster/512x167.png', model3d: null, thumbnail: null },
   },
   {
     id: 'allosaurus',
@@ -301,7 +301,7 @@ export const DINOSAURS = [
     description: 'The apex predator of the Jurassic, it likely ambushed prey with its wide-opening jaws like a hatchet rather than biting powerfully.',
     tags: ['north-america', 'jurassic', 'apex-predator'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/77061207-c2e3-4c0c-bcba-9e78cde9807d/raster/512x165.png', model3d: null, thumbnail: null },
   },
   // ── Huge ──────────────────────────────────────────────────────────────────
   {
@@ -318,7 +318,7 @@ export const DINOSAURS = [
     description: 'Perhaps the most famous predator of all time. Binocular vision, powerful legs, and bone-crushing jaws — but those arms really are that small.',
     tags: ['north-america', 'apex-predator', 'iconic'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/ccb9b896-20b5-4e0b-8979-001742a884c5/raster/512x254.png', model3d: null, thumbnail: null },
   },
   {
     id: 'spinosaurus',
@@ -334,7 +334,7 @@ export const DINOSAURS = [
     description: 'The largest known carnivorous dinosaur, longer than T. rex. Its distinctive sail may have served thermoregulation. Primarily a fish-eater, semi-aquatic.',
     tags: ['africa', 'apex-predator', 'fish-eater', 'giant'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/b8db44e0-1c99-4256-8c35-61e914af848b/raster/512x199.png', model3d: null, thumbnail: null },
   },
   // ── Giants ────────────────────────────────────────────────────────────────
   {
@@ -351,7 +351,7 @@ export const DINOSAURS = [
     description: 'One of the longest dinosaurs, with a whip-like tail possibly used for communication or defense. Could crack it like a bullwhip, creating a sonic boom.',
     tags: ['north-america', 'jurassic', 'giant', 'long-neck'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/72f60e5d-9337-4252-a536-8c37f1739541/raster/512x269.png', model3d: null, thumbnail: null },
   },
   {
     id: 'brachiosaurus',
@@ -367,7 +367,7 @@ export const DINOSAURS = [
     description: 'Could browse treetops no other dinosaur could reach. One of the tallest animals ever to walk the Earth — about as tall as a four-story building.',
     tags: ['north-america', 'africa', 'jurassic', 'giant', 'tallest'],
     isJurassicWorld: false,
-    assets: { silhouette2d: null, model3d: null, thumbnail: null },
+    assets: { silhouette2d: 'https://images.phylopic.org/images/18f947ce-1c93-4652-8497-bf72f58a3dae/raster/512x233.png', model3d: null, thumbnail: null },
   },
   // ── Jurassic World (fictional) ────────────────────────────────────────────
   {

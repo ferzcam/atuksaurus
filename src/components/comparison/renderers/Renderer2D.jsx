@@ -24,7 +24,12 @@ export default function Renderer2D({ dino, x, topY, groundY, heightPx, slotWidth
         width={slotWidth}
         height={heightPx}
         preserveAspectRatio="xMidYMax meet"
-        style={{ filter: `drop-shadow(0 0 6px ${stroke}55)` }}
+        style={{
+          // brightness(0) → forces all pixels to black; invert(1) → flips to white.
+          // This makes the black PhyloPic silhouette white on our dark background.
+          // The drop-shadow then adds a diet-color glow around the shape.
+          filter: `brightness(0) invert(1) drop-shadow(0 2px 10px ${stroke}cc)`,
+        }}
       />
     )
   }

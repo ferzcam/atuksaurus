@@ -32,7 +32,7 @@ export default function Renderer2D({ dino, x, topY, groundY, heightPx, slotWidth
         y={topY}
         width={renderW}
         height={renderH}
-        style={{ filter: `brightness(0) invert(1) drop-shadow(0 2px 10px ${stroke}cc)` }}
+        style={{ filter: `brightness(0) invert(1) brightness(0.72) drop-shadow(0 2px 8px ${stroke}88)` }}
       />
     )
   }

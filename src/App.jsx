@@ -5,8 +5,15 @@ import ComparisonPlane from './components/comparison/ComparisonPlane'
 
 const MAX_SELECTION = 8
 
+const MODES = [
+  { key: '2d',     label: '2D',     title: 'Silhouette comparison' },
+  { key: '3d',     label: '3D',     title: 'Sketchfab 3D models (CC BY 4.0)' },
+  { key: 'fossil', label: 'Fossil', title: 'Smithsonian scanned fossils (CC0)' },
+]
+
 export default function App() {
   const [selectedIds, setSelectedIds] = useState(new Set())
+  const [mode, setMode]               = useState('2d')
 
   const toggle = (id) => {
     setSelectedIds(prev => {
@@ -51,11 +58,31 @@ export default function App() {
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Top bar */}
         <header className="px-6 py-3 border-b border-stone-800 flex items-center gap-4 bg-stone-900/30">
-          <span className="text-stone-400 text-sm">
+          {/* Mode switcher */}
+          <div className="flex items-center gap-1 bg-stone-900 rounded-lg p-1 flex-shrink-0">
+            {MODES.map(m => (
+              <button
+                key={m.key}
+                onClick={() => setMode(m.key)}
+                title={m.title}
+                className={[
+                  'text-xs px-3 py-1 rounded-md font-medium transition-all duration-150',
+                  mode === m.key
+                    ? 'bg-amber-600 text-white shadow-sm'
+                    : 'text-stone-400 hover:text-stone-200',
+                ].join(' ')}
+              >
+                {m.label}
+              </button>
+            ))}
+          </div>
+
+          <span className="text-stone-600 text-sm">
             {selectedDinos.length === 0
               ? 'No dinosaurs selected'
               : `Comparing ${selectedDinos.length} dinosaur${selectedDinos.length > 1 ? 's' : ''}`}
           </span>
+
           {selectedDinos.length > 0 && (
             <div className="flex items-center gap-2 flex-wrap">
               {selectedDinos.map(d => (
@@ -75,7 +102,7 @@ export default function App() {
 
         {/* Comparison area */}
         <div className="flex-1 overflow-hidden p-5">
-          <ComparisonPlane dinos={selectedDinos} />
+          <ComparisonPlane dinos={selectedDinos} mode={mode} />
         </div>
       </main>
     </div>

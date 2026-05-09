@@ -2,6 +2,7 @@ import { useState } from 'react'
 import HumanFigure from './HumanFigure'
 import DinoFigure from './DinoFigure'
 import DinoDetail from './DinoDetail'
+import ComparisonEmbed from './ComparisonEmbed'
 import { parseSilhouetteAspect } from './silhouetteUtils'
 
 // Layout constants (px)
@@ -27,16 +28,17 @@ function dinoSlotWidth(dino, scale) {
 
 /**
  * ComparisonPlane — entry point for the comparison view.
- *
- * The `mode` prop is reserved for future 3-D support:
- *   '2d' → SVG plane (current)
- *   '3d' → Three.js canvas (future, pass to DinoFigure renderer prop)
+ * mode: '2d' → SVG silhouettes | '3d' → Sketchfab embeds | 'fossil' → Smithsonian embeds
  */
 export default function ComparisonPlane({ dinos, mode = '2d' }) {
   const [focusedDino, setFocusedDino] = useState(null)
 
   if (dinos.length === 0) {
     return <EmptyState />
+  }
+
+  if (mode === '3d' || mode === 'fossil') {
+    return <ComparisonEmbed dinos={dinos} mode={mode} />
   }
 
   const maxH   = Math.max(...dinos.map(d => d.heightM), 2.5)

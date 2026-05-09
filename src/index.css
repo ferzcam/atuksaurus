@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-stone-950 text-stone-100 antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-stone-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-stone-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-stone-500;
+  }
+}
+
+@layer utilities {
+  .dino-card-selected {
+    @apply border-amber-500 bg-amber-950/30 shadow-[0_0_12px_theme(colors.amber.900/60%)];
+  }
+}

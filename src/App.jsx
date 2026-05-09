@@ -31,9 +31,9 @@ export default function App() {
       <aside className="w-72 flex-shrink-0 border-r border-stone-800 flex flex-col bg-stone-900/50">
         {/* App title */}
         <div className="px-5 py-4 border-b border-stone-800">
-          <div className="flex items-baseline gap-2">
-            <span className="text-xl font-black tracking-tight text-amber-500">DINO</span>
-            <span className="text-xl font-black tracking-tight text-stone-300">PEDIA</span>
+          <div className="flex items-baseline gap-1">
+            <span className="text-xl font-black tracking-tight text-amber-500">ATUK</span>
+            <span className="text-xl font-black tracking-tight text-stone-300">SAURUS</span>
           </div>
           <p className="text-[11px] text-stone-600 mt-0.5 tracking-wide uppercase">
             Height Comparator

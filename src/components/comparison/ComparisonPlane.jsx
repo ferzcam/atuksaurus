@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import HumanFigure from './HumanFigure'
 import DinoFigure from './DinoFigure'
 import DinoDetail from './DinoDetail'
@@ -32,13 +32,24 @@ function dinoSlotWidth(dino, scale) {
  */
 export default function ComparisonPlane({ dinos, mode = '2d' }) {
   const [focusedDino, setFocusedDino] = useState(null)
+  const scrollRef  = useRef(null)
+  const prevIdsRef = useRef([])
 
-  if (dinos.length === 0) {
-    return <EmptyState />
-  }
-
-  if (mode === '3d' || mode === 'fossil') {
-    return <ComparisonEmbed dinos={dinos} mode={mode} />
+  // Scroll the plane so a given dino's slot is fully visible. The plane is
+  // human-anchored on the left, so larger dinos (sorted to the right) would
+  // otherwise stay off-screen. No-op if the slot is already visible, so this
+  // never fights the user while they hover already-visible figures.
+  const scrollSlotIntoView = (id, slots) => {
+    const el = scrollRef.current
+    if (!el) return
+    const entry = slots.find(s => s.dino.id === id)
+    if (!entry) return
+    const { x, slotWidth } = entry
+    const viewLeft  = el.scrollLeft
+    const viewRight = viewLeft + el.clientWidth
+    if (x >= viewLeft && x + slotWidth <= viewRight) return   // already visible
+    const target = x + slotWidth / 2 - el.clientWidth / 2     // center the slot
+    el.scrollTo({ left: Math.max(0, target), behavior: 'smooth' })
   }
 
   const maxH   = Math.max(...dinos.map(d => d.heightM), 2.5)
@@ -62,10 +73,36 @@ export default function ComparisonPlane({ dinos, mode = '2d' }) {
   const maxTick = Math.ceil(maxH * 1.14)
   const ticks   = Array.from({ length: maxTick + 1 }, (_, i) => i)
 
+  // When a dino is added to the comparison, reveal it: focus it (opens its
+  // detail panel) and scroll the plane so the new — often large — figure isn't
+  // left off-screen to the right.
+  useEffect(() => {
+    const prevIds = prevIdsRef.current
+    const added   = positioned.find(p => !prevIds.includes(p.dino.id))
+    prevIdsRef.current = positioned.map(p => p.dino.id)
+    if (added) {
+      setFocusedDino(added.dino)
+      requestAnimationFrame(() => scrollSlotIntoView(added.dino.id, positioned))
+    }
+  }, [dinos])
+
+  // When a figure is focused (clicked in the plane), keep it in view.
+  useEffect(() => {
+    if (focusedDino) scrollSlotIntoView(focusedDino.id, positioned)
+  }, [focusedDino?.id])
+
+  if (dinos.length === 0) {
+    return <EmptyState />
+  }
+
+  if (mode === '3d' || mode === 'fossil') {
+    return <ComparisonEmbed dinos={dinos} mode={mode} />
+  }
+
   return (
     <div className="flex flex-col gap-4 h-full">
       {/* Scrollable SVG */}
-      <div className="flex-1 overflow-auto rounded-xl border border-stone-800/80 bg-stone-950">
+      <div ref={scrollRef} className="flex-1 overflow-auto rounded-xl border border-stone-800/80 bg-stone-950">
         <svg
           width={Math.max(svgW, 320)}
           height={L.svgH}

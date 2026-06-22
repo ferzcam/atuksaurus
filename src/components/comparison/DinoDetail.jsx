@@ -15,7 +15,7 @@ export default function DinoDetail({ dino }) {
   if (!dino) {
     return (
       <div className="h-28 rounded-xl border border-stone-800/60 bg-stone-900/40 flex items-center justify-center">
-        <p className="text-stone-700 text-sm">Hover or click a dinosaur for details</p>
+        <p className="text-stone-700 text-sm">Tap a dinosaur for details</p>
       </div>
     )
   }
@@ -25,7 +25,7 @@ export default function DinoDetail({ dino }) {
 
   return (
     <div
-      className="rounded-xl border bg-stone-900/60 p-4 flex gap-6 items-start transition-all duration-200"
+      className="rounded-xl border bg-stone-900/60 p-4 flex flex-col sm:flex-row gap-4 sm:gap-6 sm:items-start transition-all duration-200 overflow-y-auto"
       style={{ borderColor: diet.color + '55' }}
     >
       {/* Name block */}
@@ -49,7 +49,7 @@ export default function DinoDetail({ dino }) {
       </div>
 
       {/* Stats */}
-      <div className="flex-shrink-0 grid grid-cols-3 gap-x-6 gap-y-3 ml-auto">
+      <div className="flex-shrink-0 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-3 sm:ml-auto">
         <Stat label="Height"  value={`${dino.heightM} m`} />
         <Stat label="Length"  value={`${dino.lengthM} m`} />
         <Stat label="Weight"  value={dino.weightKg >= 1000 ? `${(dino.weightKg / 1000).toFixed(1)} t` : `${dino.weightKg} kg`} />
